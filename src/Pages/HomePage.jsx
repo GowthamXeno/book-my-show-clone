@@ -46,8 +46,40 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="container mx-auto px-4 md:px-12 my-8 bg-gray-700">
-        <PosterSlider posters={recommendedMovies} />
+      <div className="mx-auto px-4 md:px-12 my-8">
+        <PosterSlider
+          posters={recommendedMovies}
+          isDark={false}
+          title="Recommended Movies"
+          subtitle="List of recommonded movies"
+        />
+      </div>
+
+      <div>
+        <div className="mx-auto px-4 md:px-12 my-8 bg-premier-800">
+          <div>
+            <img
+              src="https://in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/premiere-rupay-banner-web-collection-202104230555.png"
+              alt="Rupay"
+              className="w-full h-full"
+            />
+          </div>
+          <PosterSlider
+            title="Premiers"
+            subtitle="Brand new releases every Friday"
+            posters={PremierMovies}
+            isDark={true}
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto px-4 md:px-12 my-8">
+        <PosterSlider
+          title="Online Streaming Events"
+          subtitle="Online Stream Events"
+          posters={onlineStreamEvents}
+          isDark={false}
+        />
       </div>
     </>
   );

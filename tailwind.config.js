@@ -3,6 +3,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      height: {
+        100: "26rem",
+      },
       colors: {
         darkBackground: {
           50: "#edf1fc",
@@ -33,4 +36,3 @@ module.exports = {
   },
   plugins: [],
 };
-

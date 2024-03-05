@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import axios from "axios";
 import PosterSlider from "../Components/PosterComp/PosterSlider";
+import HeroCarousel from "../Components/HeroCarousel/HeroCarouselComp";
+import EndlessEntertainment from "../Components/EndlessEntertainment";
+import EntertainmentCardSlider from "../Components/EntertainmentCardSlider";
 
 const HomePage = () => {
   const [recommendedMovies, SetrecommendedMovies] = useState([]);
@@ -46,6 +49,9 @@ const HomePage = () => {
 
   return (
     <>
+      <HeroCarousel />
+
+
       <div className="mx-auto px-4 md:px-12 my-8">
         <PosterSlider
           posters={recommendedMovies}
@@ -54,6 +60,10 @@ const HomePage = () => {
           subtitle="List of recommonded movies"
         />
       </div>
+
+      <EndlessEntertainment />
+
+      <EntertainmentCardSlider />
 
       <div>
         <div className="mx-auto px-4 md:px-12 my-8 bg-premier-800">

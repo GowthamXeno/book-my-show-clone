@@ -1,10 +1,10 @@
 import React from "react";
-// import Navbar_Component from "../Components/Navbar_Component";
+import NavbarComp from "../Components/Navbar/NavbarComp";
 
 const DefaultLayout = (Component) => (props) => {
   return (
     <>
-      {/* <Navbar_Component /> */}
+      <NavbarComp />
       <Component {...props} />
     </>
   );

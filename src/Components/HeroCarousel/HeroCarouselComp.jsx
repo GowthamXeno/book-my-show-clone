@@ -8,6 +8,7 @@ const HeroCarousel = () => {
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1706382336630_web.jpg",
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1709100065764_desktopsgdiysdgisd.jpg",
     "https://in.bmscdn.com/webin/best-of-2018/best-of-2018-banner.jpg",
+    "https://assets-in.bmscdn.com/promotions/cms/creatives/1709551322766_webbanner3.jpg",
   ]);
 
   const settingLG = {

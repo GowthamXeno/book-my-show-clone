@@ -14,7 +14,7 @@ function NavSm() {
         <div>
           <h3 className="text-xl font-bold">It All Starts Here!</h3>
           <span className="text-red-600 text-xs flex items-center cursor-pointer hover:text-white">
-            Chennai <BiChevronRight className="" />
+            Chennai <BiChevronRight />
           </span>
         </div>
         <div className="w-24 h-8 flex  gap-3 items-center flex-row">

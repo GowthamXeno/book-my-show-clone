@@ -3,9 +3,8 @@ import DefaultLayout from "../Layouts/DefaultLayout";
 import axios from "axios";
 import PosterSlider from "../Components/PosterComp/PosterSlider";
 import HeroCarousel from "../Components/HeroCarousel/HeroCarouselComp";
-import EndlessEntertainment from "../Components/EndlessEntertainment";
-import EntertainmentCardSlider from "../Components/EntertainmentCardSlider";
-
+import EndlessEntertainment from "../Components/Entertainment/EndlessEntertainment";
+import EntertainmentCardSlider from "../Components/Entertainment/EntertainmentCardSlider";
 const HomePage = () => {
   const [recommendedMovies, SetrecommendedMovies] = useState([]);
   const [PremierMovies, SetPremierMovies] = useState([]);

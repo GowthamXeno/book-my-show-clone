@@ -1,9 +1,12 @@
 import React from 'react'
-
-const MovieLayout = () => {
-  return (
-    <div>MovieLayout</div>
-    )
+import MovieNavbarComp from '../Components/Navbar/MovieNavbarComp';
+const MovieLayout = (WrappedComponent) =>
+(props)=>{
+  return <>
+    <MovieNavbarComp />
+    <WrappedComponent {...props} />
+    <div>Footer</div>
+  </>
   }
   
   export default MovieLayout;

@@ -51,16 +51,16 @@ const MovieHeroComp = () => {
         {/* Larger Screen */}
         <div
           className="relative hidden w-full lg:block"
-          style={{ height: "28rem" }}
+          style={{ height: "29rem" }}
         >
           <div
             className="absolute z-20 w-full h-full"
             style={{
               backgroundImage:
-                "linear-gradient(90deg, rgb(34,34,34) 24.95%, rgb(34,34,34) 38.2%, rgba(34,34,34,0.03) 97.47%, rgb(34, 34, 34) 100%)",
+                "linear-gradient(90deg,rgb(34,34,34,0.7),rgb(34,34,34,0.9) 3%,rgb(34,34,34) 6%, rgb(34,34,34) 24.95%, rgb(34,34,34) 30.2%, rgba(34,34,34,0.03) 97.47%, rgb(34, 34, 34) 100%)",
             }}
           >
-            <div className="absolute z-30 left-24 top-10 flex itmes-center gap-10">
+            <div className="absolute z-30 left-16 top-9 flex itmes-center gap-12">
               <div className="w-64 h-96">
                 <img
                   src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
@@ -68,7 +68,7 @@ const MovieHeroComp = () => {
                   className="w-full h-full rounded-lg"
                 ></img>
               </div>
-              <div>
+              <div className="flex items-center">
                 <MovieInfoComp movie={movie} />
               </div>
             </div>

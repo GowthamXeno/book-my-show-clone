@@ -64,7 +64,7 @@ function NavLg() {
               className="w-full h-full"
             />
           </div>
-          <div className="w-full flex items-center gap-3 bg-white px-3 py-1 rounded-md">
+          <div className="w-full flex items-center gap-3 bg-white border-1 px-3 py-1 rounded-md">
             <BiSearch className="text-gray-500" />
             <input
               type="search"

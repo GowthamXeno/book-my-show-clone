@@ -4,15 +4,14 @@ import PlayFilersComp from "../Components/PlayFilters/PlayFilersComp";
 import axios from "axios";
 import Poster from "../Components/PosterComp/Poster";
 
-const PlayPage = () => {
+const TvSeries = () => {
   const [PlayMovies, SetPlayMovies] = useState([]);
   useEffect(() => {
     async function RequestUpcommingMovies() {
       try {
-        const getUpcommingMovies = await axios.get(
-          "movie/now_playing?region=IN"
-        );
+        const getUpcommingMovies = await axios.get("tv/popular?region=IN");
         SetPlayMovies(getUpcommingMovies.data.results);
+        console.log(PlayMovies);
       } catch (err) {
         console.log(err.message);
       }
@@ -39,7 +38,7 @@ const PlayPage = () => {
               <div className="bg-white">
                 <PlayFilersComp
                   title="Language"
-                  tags={["Tamil","English", "Kannada", "Hindi", "Telgu"]}
+                  tags={["Tamil", "English", "Kannada", "Hindi", "Telgu"]}
                 />
               </div>
               <div className="bg-white">
@@ -65,17 +64,12 @@ const PlayPage = () => {
         <div>
           <div className="" style={{ width: "100%" }}>
             <h2 className="text-2xl font-bold text-gray-700">
-              Plays In Chennai
+              Popular Tv Shows
             </h2>
             <div className="flex justify-center flex-wrap gap-5 mt-5 ">
               {PlayMovies.map((movie, index) => (
                 <div className="m-3 h-auto w-auto ">
-                  <Poster
-                    {...movie}
-                    isDark={false}
-                    key={index}
-                    linking={false}
-                  />
+                  <Poster {...movie} isDark={false} key={index} linking={false}/>
                 </div>
               ))}
             </div>
@@ -86,4 +80,4 @@ const PlayPage = () => {
   );
 };
 
-export default DefaultLayout(PlayPage);
+export default DefaultLayout(TvSeries);

@@ -12,19 +12,21 @@ const MovieInfoComp = () => {
     .join(" • ");
   const [isOpen,setIsOpen] = useState(false);
   const [price,setPrice] = useState(0);
-
+  const [state,setstate] = useState("");
   const rentmovie = ()=>{
       setIsOpen(true);
       setPrice(499);
+      setstate("Rent");
   }
   
   const buymovie = () => {
     setIsOpen(true);
     setPrice(999);
+    setstate("Buy")
   };
   return (
     <>
-      <PaymentModal className="z-10" setIsOpen={setIsOpen} isOpen={isOpen} price={price} />
+      <PaymentModal className="z-10" setIsOpen={setIsOpen} isOpen={isOpen} price={price} state={state}/>
       <div className="flex flex-col items-">
         <h1 className="text-white text-4xl font-bold ">
           {movie.original_title}
@@ -42,7 +44,7 @@ const MovieInfoComp = () => {
             <h4>{movie.vote_count} votes</h4>
           </div>
           <div className=" pt-3">
-            <span className="pb-0.5 font- rounded-sm">
+            <span className="pb-0.5  rounded-sm">
               Languages : {languagesList}
             </span>
           </div>

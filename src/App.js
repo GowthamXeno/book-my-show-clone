@@ -7,6 +7,8 @@ import axios from "axios";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import StreamPage from "./Pages/StreamPage";
+import TvSeries from "./Pages/TvSeries";
 
 const API_KEY="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMmM4ZDEwNzliNGFhY2ViZDkzZWNiZmM5NjViMjUwMiIsInN1YiI6IjY1ZTQ3OTk3OWVlMGVmMDE4NTcxMGVkZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.8QTdoZBa_4JstqLmnbc8CrrraXSUaVkKKKfcs_7LRF8";
 
@@ -20,6 +22,8 @@ function App() {
       <Route path="/" element={<HomePage />}></Route>
       <Route path="/movie/:id" element={<MoviePage />}></Route>
       <Route path="/plays" element={<PlayPage />}></Route>
+      <Route path="/stream" element={<StreamPage />}></Route>
+      <Route path="/tvseries" element={<TvSeries />}></Route>
     </Routes>
   );
 }

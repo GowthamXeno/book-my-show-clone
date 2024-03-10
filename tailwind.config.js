@@ -8,6 +8,7 @@ module.exports = {
       },
       height: {
         100: "26rem",
+        110:"29rem"
       },
       colors: {
         darkBackground: {

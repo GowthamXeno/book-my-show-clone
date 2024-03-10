@@ -115,9 +115,6 @@ const MoviePage = () => {
       },
     ],
   };
-  setTimeout(() => {
-    console.log("Movie = ",movie);
-  }, 3000);
 
   return (
     <>

@@ -1,8 +1,24 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { MovieContext } from "../../Context/MovieContext";
 import MovieInfoComp from "../MovieHero/MovieInfoComp";
+import PaymentModal from "../PaymentModal/PaymentComp";
+import { FaStar } from "react-icons/fa6";
 
 const MovieHeroComp = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [price, setPrice] = useState(0);
+  const [state, setstate] = useState("");
+  const rentmovie = () => {
+    setIsOpen(true);
+    setPrice(499);
+    setstate("Rent");
+  };
+
+  const buymovie = () => {
+    setIsOpen(true);
+    setPrice(999);
+    setstate("Buy");
+  };
   const { movie } = useContext(MovieContext);
   const Vote = movie.vote_average;
   const languagesList = movie.spoken_languages
@@ -20,29 +36,54 @@ const MovieHeroComp = () => {
     <>
       <div>
         {/* Mobile and Tablet screen */}
-        <div className="lg:hidden w-full">
+        <PaymentModal
+          className="z-10"
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+          price={price}
+          state={state}
+        />
+        <div className="lg:hidden " style={{ width: "95%" }}>
           <img
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt="Cover Poster"
-            className="m-4 rounded"
-            style={{ width: "calc(100%-2rem)" }}
+            className="m-3 rounded-lg "
+            style={{ width: "calc(100%-6rem)" }}
           />
         </div>
         <div className="flex flex-col gap-3 lg:hidden">
-          <div className="flex flex-col-reverse gap-3 px-4 my-3">
-            <div className="text-black flex flex-col gap-2 md:px-4">
-              <h4>{Vote !== undefined ? Vote.toFixed(1) : "N/A"} / 10</h4>
-              <h4>{languagesList}</h4>
-              <h4>
-                {movie.runtime} min | {genres}
-              </h4>
+          <div className="text-black flex flex-col gap-3 pl-5">
+            <div className="flex items-end gap-2 pt-7">
+              <div className="flex items-center gap-2">
+                <span className="w-7 h-7 ">
+                  <FaStar className="w-full h-full text-red-500" />
+                </span>
+                <h4 className="text-2xl font-semibold text-black">
+                  {Vote !== undefined ? Vote.toFixed(1) : "N/A"}/10
+                </h4>
+              </div>
+              <h4>{movie.vote_count} votes</h4>
             </div>
+            <div className=" pt-3">
+              <span className="pb-0.5 font- rounded-sm text-black">
+                Languages : {languagesList}
+              </span>
+            </div>
+            <h4 className="font-medium pb-7 text-black">
+              {movie.runtime} min • {genres}
+            </h4>
           </div>
           <div className="flex items-center gap-3 md:px-4 md:w-screen text-xl px-4">
-            <button className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg">
+            <button
+              onClick={rentmovie}
+              className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg"
+            >
               Rent ₹499
             </button>
-            <button className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg">
+            <button
+              onClick={buymovie}
+              className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg"
+            >
               Buy ₹999
             </button>
           </div>

@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 // import { MovieContext } from "../../Context/MovieContext";
-import axios from "axios";
+
 // import { MovieContext } from "../../Context/MovieContext";
 import { FaStar } from "react-icons/fa6";
 // import MovieInfoComp from "../MovieHero/MovieInfoComp";
@@ -10,7 +10,6 @@ import { FaStar } from "react-icons/fa6";
 
 const StreamPoster = (movie) => {
   // const { movie, setMovie } = useContext(MovieContext);
-  const genres = movie.genres?.map(({ name }) => name).join(", ");
   const Vote = movie.vote_average;
   const languagesList = movie.overview;
   console.log("Movie V=", languagesList);

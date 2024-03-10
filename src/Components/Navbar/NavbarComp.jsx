@@ -2,14 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import {
   BiChevronDown,
-  BiChevronRight,
   BiMenu,
   BiSearch,
 } from "react-icons/bi";
 
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
+
 
 const Locations = [
   { name: "Chennai" },
@@ -76,24 +75,46 @@ function Example() {
 function NavSm() {
   return (
     <>
-      <div className="flex items-center justify-between">
-        <div>
-          <h3 className="text-xl font-bold">It All Starts Here!</h3>
-          {/* <span className="text-red-600 text-xs flex items-center cursor-pointer hover:text-white">
+      <div>
+        <div className="flex items-center justify-between">
+          <div>
+            <h3 className="text-xl font-bold">It All Starts Here!</h3>
+            {/* <span className="text-red-600 text-xs flex items-center cursor-pointer hover:text-white">
             Chennai <BiChevronRight />
           </span> */}
-          <Example />
+            <Example />
+          </div>
+          <div className="w-24 h-8 flex  gap-3 items-center flex-row">
+            <Link
+              to="https://play.google.com/store/apps/details?id=com.bt.bms&hl=en_IN&gl=US&pli=1"
+              target="_blank"
+            >
+              <button className="border  border-gray-400 rounded-lg p-1 text-sm">
+                Use App
+              </button>
+            </Link>
+            <BiSearch className="w-1/5 h-5 text-gray-600" />
+          </div>
         </div>
-        <div className="w-24 h-8 flex  gap-3 items-center flex-row">
+        <div className="flex justify-evenly px-6 pt-2">
           <Link
-            to="https://play.google.com/store/apps/details?id=com.bt.bms&hl=en_IN&gl=US&pli=1"
-            target="_blank"
+            to="/stream"
+            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
           >
-            <button className="border  border-gray-400 rounded-lg p-1 text-sm">
-              Use App
-            </button>
+            Streams
           </Link>
-          <BiSearch className="w-1/5 h-5 text-gray-600" />
+          <Link
+            to="/plays"
+            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
+          >
+            Plays
+          </Link>
+          <Link
+            to="/tvseries"
+            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
+          >
+            Tv Series
+          </Link>
         </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useFetcher, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import { MovieContext } from "../Context/MovieContext";
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";

@@ -74,7 +74,7 @@ const PlayPage = () => {
                     {...movie}
                     isDark={false}
                     key={index}
-                    linking={false}
+                    linking={true}
                   />
                 </div>
               ))}

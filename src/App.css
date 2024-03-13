@@ -27,3 +27,11 @@
     background-position: 100% 0;
   }
 }
+
+#Footer button {
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  color: #333338;
+  background-color: #303030;
+}

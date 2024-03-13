@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import PosterSlider from "../Components/PosterComp/PosterSlider";
-
-import MovieLayout from "../Layouts/MovieLayout";
 import Slider from "react-slick";
 import StreamPoster from "../Components/PosterComp/StreamPoster";
 import { NextArrow, PrevArrow } from "../Components/HeroCarousel/ArrowComp";
+import DefaultLayout from "../Layouts/DefaultLayout";
 
 const StreamPage = () => {
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -117,4 +116,4 @@ const StreamPage = () => {
   );
 };
 
-export default MovieLayout(StreamPage);
+export default DefaultLayout(StreamPage);

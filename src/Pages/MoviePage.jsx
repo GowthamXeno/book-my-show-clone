@@ -6,7 +6,7 @@ import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../Components/PosterComp/PosterSlider";
 import Slider from "react-slick";
 import Cast from "../Components/Cast/CastComp";
-import MovieLayout from "../Layouts/MovieLayout";
+import DefaultLayout from "../Layouts/DefaultLayout";
 import MovieHeroComp from "../Components/MovieHero/MovieHeroComp";
 
 const MoviePage = () => {
@@ -219,4 +219,4 @@ const MoviePage = () => {
   );
 };
 
-export default MovieLayout(MoviePage);
+export default DefaultLayout(MoviePage);

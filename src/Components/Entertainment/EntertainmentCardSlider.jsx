@@ -2,7 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 
 const EntertainmentCard = (props) => {
-  // console.log("Key=");
   return (
     <>
       <div className="px-4 py-4">
@@ -68,15 +67,8 @@ const EntertainmentCardSlider = () => {
         <Slider {...settings}>
           {EntertainmentImage.map((image, index) => {
             return <EntertainmentCard src={image} key={index} />;
-
-            // console.log("Key ", index, " Src= ", image);
           })}
         </Slider>
-        {/* <EntertainmentCard
-        src={
-          "https://assets-in.bmscdn.com/discovery-catalog/collections/tr:w-800,h-800:l-text,ie-OSBFdmVudHM%3D,co-FFFFFF,ff-Roboto,fs-64,lx-48,ly-320,tg-b,pa-8_0_0_0,l-end:w-300/theatre-shows-collection-202211140440.png"
-        }
-      /> */}
       </div>
     </>
   );

@@ -25,10 +25,6 @@ const MovieHeroComp = () => {
     ?.map(({ english_name }) => english_name)
     .join(", ");
 
-  // map((each)=> each.english_name)
-  console.log(languagesList);
-  // const rounded = Vote.toFixed(1);
-
   const genres = movie.genres?.map(({ name }) => name).join(", ");
   console.log(genres);
 

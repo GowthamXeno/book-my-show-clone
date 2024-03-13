@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { MovieContext } from "../../Context/MovieContext";
-
-// import { MovieContext } from "../../Context/MovieContext";
 import { FaStar } from "react-icons/fa6";
-// import MovieInfoComp from "../MovieHero/MovieInfoComp";
 
-// import Postercomp
 
 const StreamPoster = (movie) => {
-  // const { movie, setMovie } = useContext(MovieContext);
   const Vote = movie.vote_average;
   const languagesList = movie.overview;
   console.log("Movie V=", languagesList);

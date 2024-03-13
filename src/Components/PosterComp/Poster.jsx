@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../App.css"
+
 const Poster = (props) => {
   const isDark = props.isDark ? props.isDark : false;
 
@@ -11,7 +13,7 @@ const Poster = (props) => {
             <img
               src={`https://image.tmdb.org/t/p/original/${props.poster_path}`}
               alt="Poster"
-              className="w-full h-full rounded-lg"
+              className="w-full h-full rounded-lg skeleton"
             />
           </div>
           <h3
@@ -26,10 +28,13 @@ const Poster = (props) => {
       </>
     );
   }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0,  behavior: "smooth" });
+  };
   if (props.linking) {
     return (
       <>
-        <Link to={`/movie/${props.id}`}>
+        <Link to={`/movie/${props.id}`} onClick={scrollToTop}>
           <Containcomponet />
         </Link>
       </>

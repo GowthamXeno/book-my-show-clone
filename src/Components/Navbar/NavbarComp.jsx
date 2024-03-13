@@ -78,7 +78,7 @@ function NavSm() {
       <div>
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-xl font-bold">It All Starts Here!</h3>
+            <h3 className="text-xl font-semibold">It All Starts Here!</h3>
             {/* <span className="text-red-600 text-xs flex items-center cursor-pointer hover:text-white">
             Chennai <BiChevronRight />
           </span> */}

@@ -3,14 +3,18 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-     borderWidth: {
-        '1': '1px',
+      borderWidth: {
+        1: "1px",
       },
       height: {
         100: "26rem",
-        110:"29rem"
+        110: "29rem",
       },
       colors: {
+        background: {
+          100: "#5d5d5f",
+          200: "#ffffff",
+        },
         darkBackground: {
           50: "#edf1fc",
           100: "#d3d4e1",

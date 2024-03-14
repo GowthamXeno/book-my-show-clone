@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React from "react";
 import {
   TiSocialFacebook,
   TiSocialInstagram,
@@ -6,23 +6,37 @@ import {
   TiSocialYoutube,
   TiSocialLinkedin,
 } from "react-icons/ti";
-import { BsTwitterX } from "react-icons/bs";
+import { FaXTwitter } from "react-icons/fa6";
+import { HiVideoCamera } from "react-icons/hi2";
+import { PiTelevisionFill } from "react-icons/pi";
+import { CiStreamOn } from "react-icons/ci";
+import { Link } from "react-router-dom";
+function FooterSm() {
+  <div>
+    <div>
+      <div><Link to="/"><div><HiVideoCamera /><h4>Movies</h4></div></Link></div>
+    </div>
+  </div>
+}
 
-function FooterSm() {}
 
 function FooterLg() {
-    const [hovered, setHovered] = useState(false);
   const ButtonStyle = {
-    padding: "10px",
+    padding: "6px",
     border: "none",
     borderRadius: "50%",
-    backgroundColor: hovered ? "#ffffff" : "#303030",
     color: "#333338",
+    objectFit: "cover",
+  };
+  const iconSize = {
+    width: "25px",
+    height: "25px",
+    fontSize: "14px",
   };
   return (
     <>
       <div id="Footer" className="py-8" style={{ backgroundColor: "#333338" }}>
-        <div className="flex items-center justify-center py-8">
+        <div className="flex items-center justify-center py-8 pt-20">
           <div
             className="flex-1 border-b"
             style={{ borderBottomColor: "#5d5d5f" }}
@@ -40,31 +54,46 @@ function FooterLg() {
         </div>
         <div className="flex items-center justify-center pb-5 pt-3 gap-3">
           <button
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
+            className="bg-background-100 hover:bg-background-200"
             style={ButtonStyle}
           >
-            <TiSocialFacebook />{" "}
+            <TiSocialFacebook style={iconSize} />{" "}
           </button>
-          <button style={ButtonStyle}>
+          <button
+            className="bg-background-100 hover:bg-background-200"
+            style={ButtonStyle}
+          >
             {" "}
-            <BsTwitterX />{" "}
+            <FaXTwitter style={iconSize} />{" "}
+
           </button>
-          <button style={ButtonStyle}>
+          <button
+            className="bg-background-100 hover:bg-background-200"
+            style={ButtonStyle}
+          >
             {" "}
-            <TiSocialInstagram />{" "}
+            <TiSocialInstagram style={iconSize} />{" "}
           </button>
-          <button style={ButtonStyle}>
+          <button
+            className="bg-background-100 hover:bg-background-200"
+            style={ButtonStyle}
+          >
             {" "}
-            <TiSocialYoutube />{" "}
+            <TiSocialYoutube style={iconSize} />{" "}
           </button>
-          <button style={ButtonStyle}>
+          <button
+            className="bg-background-100 hover:bg-background-200"
+            style={ButtonStyle}
+          >
             {" "}
-            <TiSocialPinterest />{" "}
+            <TiSocialPinterest style={iconSize} />{" "}
           </button>
-          <button style={ButtonStyle}>
+          <button
+            className="bg-background-100 hover:bg-background-200"
+            style={ButtonStyle}
+          >
             {" "}
-            <TiSocialLinkedin />{" "}
+            <TiSocialLinkedin style={iconSize} />{" "}
           </button>
         </div>
         <div

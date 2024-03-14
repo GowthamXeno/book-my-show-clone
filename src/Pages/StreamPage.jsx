@@ -76,7 +76,7 @@ const StreamPage = () => {
   return (
     <>
       {/* <div className="flex flex-col items-start sm:ml-3 my-2 w-1/2"></div> */}
-      <div className="overflow-hidden">
+      <div className="overflow-hidden mt-2">
         <Slider {...settingStream}>
           {recommdenedMovies.map((each, index) => {
             return <StreamPoster {...each} key={index} />;
@@ -103,7 +103,7 @@ const StreamPage = () => {
           <hr />
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden mb-16">
           <PosterSlider
             config={settings}
             title="Upcoming Releases"

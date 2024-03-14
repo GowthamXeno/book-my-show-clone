@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../../App.css"
+import "../../App.css";
 
 const Poster = (props) => {
-  const isDark = props.isDark ? props.isDark : false;
+  // const isDark = props.isDark ? props.isDark : false;
 
   function Containcomponet() {
     return (
       <>
-        <div className="flex flex-col  items-start gap-2 px-1 md:px-3 w-36 md:w-60">
-          <div className="h-40 md:h-80">
+        <div className="flex flex-col  items-start gap-2 px-1 md:px-3 w-44 md:w-60">
+          <div className="h-48 md:h-80">
             <img
               src={`https://image.tmdb.org/t/p/original/${props.poster_path}`}
               alt="Poster"
@@ -29,7 +29,7 @@ const Poster = (props) => {
     );
   }
   const scrollToTop = () => {
-    window.scrollTo({ top: 0,  behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
   if (props.linking) {
     return (

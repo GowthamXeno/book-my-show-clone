@@ -50,7 +50,6 @@ const HomePage = () => {
     <>
       <HeroCarousel />
 
-
       <div className="mx-auto px-4 md:px-12 my-8">
         <PosterSlider
           posters={recommendedMovies}
@@ -82,7 +81,7 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="mx-auto px-4 md:px-12 my-8">
+      <div className="mx-auto px-4 md:px-12 my-8 mb-16">
         <PosterSlider
           title="Online Streaming Events"
           subtitle="Online Stream Events"

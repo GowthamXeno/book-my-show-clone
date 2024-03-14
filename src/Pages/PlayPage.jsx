@@ -24,7 +24,7 @@ const PlayPage = () => {
     <>
       <div className="w-full flex mt-3 py-8 justify-between bg-gray-100 ">
         <div
-          className="mx-10 flex-col hidden md:flex"
+          className="mx-10 hidden md:flex flex-col "
           style={{ width: "90rem" }}
         >
           <div className="w-full h-full">
@@ -39,7 +39,7 @@ const PlayPage = () => {
               <div className="bg-white">
                 <PlayFilersComp
                   title="Language"
-                  tags={["Tamil","English", "Kannada", "Hindi", "Telgu"]}
+                  tags={["Tamil", "English", "Kannada", "Hindi", "Telgu"]}
                 />
               </div>
               <div className="bg-white">
@@ -62,7 +62,7 @@ const PlayPage = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="mb-16">
           <div className="" style={{ width: "100%" }}>
             <h2 className="text-2xl font-bold text-gray-700">
               Plays In Chennai

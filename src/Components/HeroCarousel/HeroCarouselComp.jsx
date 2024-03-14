@@ -5,7 +5,8 @@ const HeroCarousel = () => {
   const [images, SetImages] = useState([
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1709551304573_webbanner2.jpg",
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1706382336630_web.jpg",
-    "https://assets-in.bmscdn.com/promotions/cms/creatives/1709100065764_desktopsgdiysdgisd.jpg",
+    "https://assets-in.bmscdn.com/promotions/cms/creatives/1709889594064_freeaccessweb.jpg",
+    // "https://assets-in.bmscdn.com/promotions/cms/creatives/1709100065764_desktopsgdiysdgisd.jpg",
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1709298411305_sominithingsaiyyoshraddhaworldtour2024web.jpg",
     "https://in.bmscdn.com/webin/best-of-2018/best-of-2018-banner.jpg",
     "https://assets-in.bmscdn.com/promotions/cms/creatives/1709551322766_webbanner3.jpg",
@@ -30,7 +31,7 @@ const HeroCarousel = () => {
         <Slider {...settingLG}>
           {images.map((each, index) => {
             return (
-              <div className="w-full h-40 md:h-80 px-2 py-3" key={index}>
+              <div className="w-full h-48 md:h-80 px-2 py-3" key={index}>
                 <img
                   src={each}
                   alt="Hero Banner"

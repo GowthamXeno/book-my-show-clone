@@ -17,7 +17,7 @@ const TvSeries = () => {
       }
     }
     RequestUpcommingMovies();
-  }, []);
+  }, [PlayMovies]);
 
   return (
     <>
@@ -61,7 +61,7 @@ const TvSeries = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="mb-16">
           <div className="" style={{ width: "100%" }}>
             <h2 className="text-2xl font-bold text-gray-700">
               Popular Tv Shows
@@ -69,7 +69,12 @@ const TvSeries = () => {
             <div className="flex justify-center flex-wrap gap-5 mt-5 ">
               {PlayMovies.map((movie, index) => (
                 <div className="m-3 h-auto w-auto ">
-                  <Poster {...movie} isDark={false} key={index} linking={false}/>
+                  <Poster
+                    {...movie}
+                    isDark={false}
+                    key={index}
+                    linking={false}
+                  />
                 </div>
               ))}
             </div>

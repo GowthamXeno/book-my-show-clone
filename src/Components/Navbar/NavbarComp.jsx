@@ -1,14 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import {
-  BiChevronDown,
-  BiMenu,
-  BiSearch,
-} from "react-icons/bi";
+import { Link, useLocation } from "react-router-dom";
+import { BiChevronDown, BiMenu, BiSearch } from "react-icons/bi";
 
 import { Fragment, useState } from "react";
 import { Listbox, Transition } from "@headlessui/react";
-
 
 const Locations = [
   { name: "Chennai" },
@@ -26,7 +21,7 @@ function Example() {
     <div className="w-28 z-50">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 text-left focus:outline-none  sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white pl-3 text-left focus:outline-none  sm:text-sm">
             <span className="block truncate " style={{ fontSize: "1rem" }}>
               {selected.name}
             </span>
@@ -40,7 +35,7 @@ function Example() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
+            <Listbox.Options className=" z-50 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm">
               {Locations.map((person, personIdx) => (
                 <Listbox.Option
                   key={personIdx}
@@ -77,44 +72,25 @@ function NavSm() {
     <>
       <div>
         <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-xl font-semibold">It All Starts Here!</h3>
-            {/* <span className="text-red-600 text-xs flex items-center cursor-pointer hover:text-white">
-            Chennai <BiChevronRight />
-          </span> */}
-            <Example />
+          <div className="flex flex-col justify-start">
+            <h3 className="text-2xl font-bold text-gray-700">
+              It All Starts Here!
+            </h3>
+            <div className="z-50 ">
+              <Example />
+            </div>
           </div>
-          <div className="w-24 h-8 flex  gap-3 items-center flex-row">
+          <div className="w-28 h-8 flex  gap-3 items-center flex-row">
             <Link
               to="https://play.google.com/store/apps/details?id=com.bt.bms&hl=en_IN&gl=US&pli=1"
               target="_blank"
             >
-              <button className="border  border-gray-400 rounded-lg p-1 text-sm">
+              <button className="border  border-gray-300 rounded-lg p-1.5 text-sm">
                 Use App
               </button>
             </Link>
             <BiSearch className="w-1/5 h-5 text-gray-600" />
           </div>
-        </div>
-        <div className="flex justify-evenly px-6 pt-2">
-          <Link
-            to="/stream"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
-          >
-            Streams
-          </Link>
-          <Link
-            to="/plays"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
-          >
-            Plays
-          </Link>
-          <Link
-            to="/tvseries"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
-          >
-            Tv Series
-          </Link>
         </div>
       </div>
     </>
@@ -145,7 +121,7 @@ function NavSm() {
 //   );
 // }
 
-function NavLg() {
+function NavLg({ playsActive, tvseriesActive, streamActive }) {
   return (
     <>
       <div className="w-full">
@@ -170,8 +146,9 @@ function NavLg() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <Example />
-
+            <div className="py-2">
+              <Example />
+            </div>
             <button className="bg-red-600 text-white px-3 py-0.5 pb-1 text-sm rounded">
               Sign in
             </button>
@@ -183,19 +160,25 @@ function NavLg() {
         <div className="flex gap-3 px-6 pt-2">
           <Link
             to="/stream"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
+            className={`text-gray-500 ${
+              streamActive ? "font-semibold text-red-500" : ""
+            } text-base flex items-center cursor-pointer hover:text-red-500`}
           >
             Streams
           </Link>
           <Link
             to="/plays"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
+            className={`text-gray-500 ${
+              playsActive ? "font-semibold text-red-500" : ""
+            } text-base flex items-center cursor-pointer hover:text-red-500`}
           >
             Plays
           </Link>
           <Link
             to="/tvseries"
-            className="text-gray-500 text-base flex items-center cursor-pointer hover:text-black"
+            className={`text-gray-500 ${
+              tvseriesActive ? "font-semibold text-red-500" : ""
+            } text-base flex items-center cursor-pointer hover:text-red-500`}
           >
             Tv Series
           </Link>
@@ -205,11 +188,12 @@ function NavLg() {
   );
 }
 const NavbarComp = () => {
+  const location = useLocation();
   return (
     <>
-      <nav className="px-4 py-3">
+      <nav>
         {/* Small Screen */}
-        <div className="md:hidden">
+        <div className="md:hidden px-3 pt-2">
           <NavSm />
         </div>
         {/* Medium Screen 
@@ -217,8 +201,12 @@ const NavbarComp = () => {
           <NavMd />
         </div> */}
         {/* Large Screen  */}
-        <div className="hidden md:flex">
-          <NavLg />
+        <div className="hidden md:flex px-4 py-3">
+          <NavLg
+            streamActive={location.pathname === "/stream"}
+            playsActive={location.pathname === "/plays"}
+            tvseriesActive={location.pathname === "/tvseries"}
+          />
         </div>
       </nav>
     </>

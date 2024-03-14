@@ -8,6 +8,10 @@ import Slider from "react-slick";
 import Cast from "../Components/Cast/CastComp";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import MovieHeroComp from "../Components/MovieHero/MovieHeroComp";
+import {
+  NextArrowPoster,
+  PrevArrowPoster,
+} from "../Components/Arrows/PosterArrow";
 
 const MoviePage = () => {
   const { movie, setMovie } = useContext(MovieContext);
@@ -53,14 +57,16 @@ const MoviePage = () => {
   const settingCast = {
     infinite: false,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 6,
     slidesToScroll: 4,
     initialSlide: 0,
+    nextArrow: <NextArrowPoster />,
+    prevArrow: <PrevArrowPoster />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 5,
           slidesToScroll: 4,
         },
       },
@@ -69,15 +75,15 @@ const MoviePage = () => {
         settings: {
           slidesToShow: 5,
           slidesToScroll: 2,
-          initialSlide: 1,
+          initialSlide: 0,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToScroll: 2,
+          slidesToScroll: 4,
           slidesToShow: 2,
-          initialSlide: 4,
+          initialSlide: 0,
         },
       },
     ],
@@ -89,6 +95,8 @@ const MoviePage = () => {
     slidesToScroll: 4,
     slidesToShow: 4,
     initialSlide: 0,
+    nextArrow: <NextArrowPoster />,
+    prevArrow: <PrevArrowPoster />,
     responsive: [
       {
         breakpoint: 1024,
@@ -206,7 +214,7 @@ const MoviePage = () => {
           <hr />
         </div>
 
-        <div className="overflow-hidden">
+        <div className="overflow-hidden mb-16">
           <PosterSlider
             config={settings}
             title="BMS XCLUSIVE Movies"

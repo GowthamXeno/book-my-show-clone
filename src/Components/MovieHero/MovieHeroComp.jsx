@@ -38,7 +38,7 @@ const MovieHeroComp = () => {
         />
         <hr className="mt-1" />
         <div>
-          <h2 className="text-center text-2xl font-bold text-gray-700">
+          <h2 className="text-center text-2xl font-bold text-gray-700 md:hidden py-1">
             {movie.original_title}
           </h2>
         </div>

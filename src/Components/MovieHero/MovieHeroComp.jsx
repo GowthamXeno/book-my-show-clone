@@ -36,6 +36,12 @@ const MovieHeroComp = () => {
           price={price}
           state={state}
         />
+        <hr className="mt-1" />
+        <div>
+          <h2 className="text-center text-2xl font-bold text-gray-700">
+            {movie.original_title}
+          </h2>
+        </div>
         <div
           className="lg:hidden flex justify-center md:hidden"
           style={{ width: "95%" }}

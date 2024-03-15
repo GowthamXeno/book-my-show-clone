@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import Poster from "./Poster";
-import {NextArrowPoster , PrevArrowPoster } from "../Arrows/PosterArrow"
+import { NextArrowPoster, PrevArrowPoster } from "../Arrows/PosterArrow";
 const PosterSlider = (props) => {
   const { posters, isDark, title, subtitle } = props;
   const setting = {
@@ -30,7 +30,7 @@ const PosterSlider = (props) => {
   };
   return (
     <>
-      <div className="flex flex-col items-start sm:ml-3 my-2 w-1/2">
+      <div className="flex flex-col items-start sm:ml-3 my-2 w-4/5 md:w-1/2">
         <h3
           className={`text-lg md:text-2xl font-bold ${
             isDark ? "text-white" : "text-gray-800"
@@ -38,7 +38,11 @@ const PosterSlider = (props) => {
         >
           {title}
         </h3>
-        <p className={` text-xs md:text-sm  ${isDark ? "text-white" : "text-gray-800"}`}>
+        <p
+          className={` text-xs md:text-sm  ${
+            isDark ? "text-white" : "text-gray-800"
+          }`}
+        >
           {subtitle}
         </p>
       </div>

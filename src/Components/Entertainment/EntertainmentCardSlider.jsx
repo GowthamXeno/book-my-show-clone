@@ -55,7 +55,9 @@ const EntertainmentCardSlider = () => {
   return (
     <>
       <div className="px-3 md:px-8 pt-12 pb-1 md:pb-4">
-        <h2 className="text-2xl font-bold ">The Best Of Live Events</h2>
+        <h2 className="text-lg md:text-2xl font-bold text-gray-800">
+          The Best Of Live Events
+        </h2>
         <Slider {...settings}>
           {EntertainmentImage.map((image, index) => {
             return <EntertainmentCard src={image} key={index} />;

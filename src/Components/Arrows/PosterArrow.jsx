@@ -10,6 +10,8 @@ export function NextArrowPoster(props) {
           width: "19px",
           height: "19px",
           borderRadius: "50%",
+          zIndex:"50",
+          right: "1px",
         }}
         onClick={props.onClick}
       ></div>
@@ -26,8 +28,9 @@ export function PrevArrowPoster(props) {
           borderRadius: "50%",
           width: "19px",
           height: "19px",
+          zIndex: "50",
+          left: "1px",
         }}
-        
         onClick={props.onClick}
       ></div>
     </>

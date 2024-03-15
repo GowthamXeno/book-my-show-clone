@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { BiChevronDown, BiMenu, BiSearch } from "react-icons/bi";
 
 import { Fragment, useState } from "react";
+import { FaUserCircle } from "react-icons/fa";
 import { Listbox, Transition } from "@headlessui/react";
-
+import { userContext } from "../../Context/UserContext";
+import UserModal from "../UserModal/userModal";
 const Locations = [
   { name: "Chennai" },
   { name: "Bangalore" },
@@ -16,7 +18,6 @@ const Locations = [
 
 function Example() {
   const [selected, setSelected] = useState(Locations[0]);
-
   return (
     <div className="w-28 z-50">
       <Listbox value={selected} onChange={setSelected}>
@@ -73,7 +74,7 @@ function NavSm() {
       <div>
         <div className="flex items-center justify-between">
           <div className="flex flex-col justify-start">
-            <h3 className="text-2xl font-bold text-gray-700">
+            <h3 className="text-xl font-bold text-gray-700">
               It All Starts Here!
             </h3>
             <div className="z-50 ">
@@ -121,7 +122,15 @@ function NavSm() {
 //   );
 // }
 
-function NavLg({ playsActive, tvseriesActive, streamActive }) {
+function NavLg({
+  playsActive,
+  tvseriesActive,
+  streamActive,
+  signin,
+  setName,
+  username,
+  openModal,
+}) {
   return (
     <>
       <div className="w-full">
@@ -149,12 +158,26 @@ function NavLg({ playsActive, tvseriesActive, streamActive }) {
             <div className="py-2">
               <Example />
             </div>
-            <button className="bg-red-600 text-white px-3 py-0.5 pb-1 text-sm rounded">
-              Sign in
-            </button>
-            <div className="w-8 h-8">
-              <BiMenu className="w-full h-full" />
+            <div>
+              {signin ? (
+                <button
+                  className="bg-red-600 text-white px-3 py-0.5 pb-1 mt-1 text-sm rounded"
+                  onClick={openModal}
+                >
+                  Sign in
+                </button>
+              ) : (
+                <button onClick={openModal}>
+                  <div className="flex gap-1 items-center justify-center pt-2">
+                    <FaUserCircle className="w-5 h-5 text-gray-600" />
+                    <pre>Hi, {username}</pre>
+                  </div>
+                </button>
+              )}
             </div>
+            {/* <div className="w-8 h-8">
+              <BiMenu className="w-full h-full" />
+            </div> */}
           </div>
         </div>
         <div className="flex gap-3 px-6 pt-2">
@@ -189,8 +212,20 @@ function NavLg({ playsActive, tvseriesActive, streamActive }) {
 }
 const NavbarComp = () => {
   const location = useLocation();
+  const props = useContext(userContext);
+  let [isOpen, setIsOpen] = useState(false);
+  function openModal() {
+    setIsOpen(true);
+  }
   return (
     <>
+      <UserModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        setName={props.UsernameFunction}
+        signin={props.signin}
+        logoutfn={props.Logout}
+      />
       <nav>
         {/* Small Screen */}
         <div className="md:hidden px-3 pt-2">
@@ -203,6 +238,8 @@ const NavbarComp = () => {
         {/* Large Screen  */}
         <div className="hidden md:flex px-4 py-3">
           <NavLg
+            {...props}
+            openModal={openModal}
             streamActive={location.pathname === "/stream"}
             playsActive={location.pathname === "/plays"}
             tvseriesActive={location.pathname === "/tvseries"}

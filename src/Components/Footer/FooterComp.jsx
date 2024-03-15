@@ -12,7 +12,7 @@ import { PiTelevisionFill } from "react-icons/pi";
 import { CiStreamOn } from "react-icons/ci";
 import { Link, useLocation } from "react-router-dom";
 import { FaGithub } from "react-icons/fa";
-import "../../App.css"
+import "../../App.css";
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -26,7 +26,7 @@ function FooterSm({ homeActive, playActive, streamActive, tvseriesActive }) {
           <Link to="/" onClick={scrollToTop}>
             <div
               className={`flex flex-col items-center ${
-                homeActive ? "text-red-600" : ""
+                homeActive ? "text-red-600 font-semibold" : ""
               }`}
             >
               <img
@@ -42,7 +42,7 @@ function FooterSm({ homeActive, playActive, streamActive, tvseriesActive }) {
           <Link to="/stream">
             <div
               className={`flex flex-col items-center ${
-                streamActive ? "text-red-600" : ""
+                streamActive ? "text-red-600 font-semibold" : ""
               }`}
             >
               <CiStreamOn className="w-auto h-5" />
@@ -54,7 +54,7 @@ function FooterSm({ homeActive, playActive, streamActive, tvseriesActive }) {
           <Link to="/plays">
             <div
               className={`flex flex-col items-center ${
-                playActive ? "text-red-600" : ""
+                playActive ? "text-red-600 font-semibold" : ""
               }`}
             >
               <HiVideoCamera className="w-auto h-5" />
@@ -66,7 +66,7 @@ function FooterSm({ homeActive, playActive, streamActive, tvseriesActive }) {
           <Link to="/tvseries">
             <div
               className={`flex flex-col items-center ${
-                tvseriesActive ? "text-red-600" : ""
+                tvseriesActive ? "text-red-600 font-semibold" : ""
               }`}
             >
               <PiTelevisionFill className="w-auto h-5" />
@@ -98,14 +98,16 @@ function FooterLg() {
         <div className="flex justify-between px-8 items-center">
           <div className="flex items-center gap-2" style={{ color: "#ffffff" }}>
             <Link to="https://github.com/GowthamXeno" target="_blank">
-              <FaGithub className="w-8 h-8" />
-            </Link>
+              <div className="flex items-center gap-2">
+                <FaGithub className="w-8 h-8" />
 
-            <h2 className="text-lg font-semibold">Gowtham Xeno</h2>
+                <h2 className="text-lg font-semibold">Gowtham Xeno</h2>
+              </div>
+            </Link>
             <div className="ms-8">
               <p className="text-sm">
-                Experience the magic of booking with our intuitive platform
-                inspired by Book My Show. Made with ❤️ by Gowtham.
+                Discover seamless movie booking with our Bookmyshow app ● Your
+                entertainment companion.
               </p>
             </div>
           </div>

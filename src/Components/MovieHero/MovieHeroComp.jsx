@@ -3,7 +3,6 @@ import { MovieContext } from "../../Context/MovieContext";
 import MovieInfoComp from "../MovieHero/MovieInfoComp";
 import PaymentModal from "../PaymentModal/PaymentComp";
 import { FaStar } from "react-icons/fa6";
-
 const MovieHeroComp = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [price, setPrice] = useState(0);
@@ -13,7 +12,6 @@ const MovieHeroComp = () => {
     setPrice(499);
     setstate("Rent");
   };
-
   const buymovie = () => {
     setIsOpen(true);
     setPrice(999);
@@ -26,7 +24,6 @@ const MovieHeroComp = () => {
     .join(", ");
 
   const genres = movie.genres?.map(({ name }) => name).join(", ");
-  console.log(genres);
 
   return (
     <>
@@ -39,46 +36,49 @@ const MovieHeroComp = () => {
           price={price}
           state={state}
         />
-        <div className="lg:hidden " style={{ width: "95%" }}>
+        <div
+          className="lg:hidden flex justify-center md:hidden"
+          style={{ width: "95%" }}
+        >
           <img
             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt="Cover Poster"
-            className="m-3 rounded-lg "
-            style={{ width: "calc(100%-6rem)" }}
+            className="m-2 rounded-lg "
+            style={{ width: "calc(100%-6rem)", height: "20rem" }}
           />
         </div>
         <div className="flex flex-col gap-3 lg:hidden">
-          <div className="text-black flex flex-col gap-3 pl-5">
-            <div className="flex items-end gap-2 pt-7">
+          <div className="text-black flex flex-col gap-2 pl-5">
+            <div className="flex items-end gap-2 pt-2">
               <div className="flex items-center gap-2">
                 <span className="w-7 h-7 ">
                   <FaStar className="w-full h-full text-red-500" />
                 </span>
-                <h4 className="text-2xl font-semibold text-black">
+                <h4 className="text-xl font-semibold text-black">
                   {Vote !== undefined ? Vote.toFixed(1) : "N/A"}/10
                 </h4>
               </div>
               <h4>{movie.vote_count} votes</h4>
             </div>
-            <div className=" pt-3">
-              <span className="pb-0.5 font- rounded-sm text-black">
+            <div className=" pt-2">
+              <span className="pb-0.5  text-sm rounded-sm text-black">
                 Languages : {languagesList}
               </span>
             </div>
-            <h4 className="font-medium pb-7 text-black">
+            <h4 className="text-sm pb-3 text-black">
               {movie.runtime} min • {genres}
             </h4>
           </div>
           <div className="flex items-center gap-3 md:px-4 md:w-screen text-xl px-4">
             <button
               onClick={rentmovie}
-              className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg"
+              className="bg-red-500 w-full py-2 text-white font-semibold rounded-lg"
             >
               Rent ₹499
             </button>
             <button
               onClick={buymovie}
-              className="bg-red-500 w-full py-3 text-white font-semibold rounded-lg"
+              className="bg-red-500 w-full py-2 text-white font-semibold rounded-lg"
             >
               Buy ₹999
             </button>

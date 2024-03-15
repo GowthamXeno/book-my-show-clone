@@ -15,8 +15,8 @@ const API_KEY="eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiMmM4ZDEwNzliNGFhY2ViZDkzZWNiZmM5
 axios.defaults.baseURL = "https://api.themoviedb.org/3/";
 axios.defaults.headers.common["Accept"] = "Application/json";
 axios.defaults.headers.common["Authorization"] = `Bearer ${API_KEY}`;
-
 function App() {
+  
   return (
     <Routes>
       <Route path="/" element={<HomePage />}></Route>

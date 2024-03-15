@@ -10,6 +10,12 @@ module.exports = {
         100: "26rem",
         110: "29rem",
       },
+      fontSize: {
+        "2xs": "0.6rem",
+        "3xs": "0.49rem",
+        "4xs": "0.3rem",
+        "2base": "0.96rem",
+      },
       colors: {
         background: {
           100: "#5d5d5f",

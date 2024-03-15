@@ -8,7 +8,7 @@ const Poster = (props) => {
   function Containcomponet() {
     return (
       <>
-        <div className="flex flex-col  items-start gap-2 px-1 md:px-3 w-44 md:w-60">
+        <div className="flex flex-col  items-start gap-2 px-1 md:px-3 w-40 sm:w-44 md:w-60">
           <div className="h-48 md:h-80">
             <img
               src={`https://image.tmdb.org/t/p/original/${props.poster_path}`}
@@ -29,7 +29,7 @@ const Poster = (props) => {
     );
   }
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0 });
   };
   if (props.linking) {
     return (

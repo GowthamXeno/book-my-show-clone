@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { LoadingContext } from "../Context/LoagindContext";
 import { MovieContext } from "../Context/MovieContext";
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import PosterSlider from "../Components/PosterComp/PosterSlider";
@@ -8,6 +9,7 @@ import Slider from "react-slick";
 import Cast from "../Components/Cast/CastComp";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import MovieHeroComp from "../Components/MovieHero/MovieHeroComp";
+import { HashLoader } from "react-spinners";
 import {
   NextArrowPoster,
   PrevArrowPoster,
@@ -19,14 +21,21 @@ const MoviePage = () => {
   const [cast, setCast] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [recommdenedMovies, setRecommendedMovies] = useState([]);
-
-  useEffect(() => {
-    const requestMovie = async () => {
-      const getMovieData = await axios.get(`/movie/${id}`);
-      setMovie(getMovieData.data);
-    };
-    requestMovie();
-  }, [id]);
+  const { loading, setloading } = useContext(LoadingContext);
+  try {
+    useEffect(() => {
+      setloading(true);
+      const requestMovie = async () => {
+        const getMovieData = await axios.get(`/movie/${id}`);
+        setMovie(getMovieData.data);
+      };
+      requestMovie();
+    }, [id]);
+  } finally {
+    setTimeout(() => {
+      setloading(false);
+    }, 2800);
+  }
 
   useEffect(() => {
     const requestCast = async () => {
@@ -73,8 +82,8 @@ const MoviePage = () => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 2,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           initialSlide: 0,
         },
       },
@@ -82,7 +91,7 @@ const MoviePage = () => {
         breakpoint: 480,
         settings: {
           slidesToScroll: 4,
-          slidesToShow: 2,
+          slidesToShow: 3,
           initialSlide: 0,
         },
       },
@@ -126,103 +135,120 @@ const MoviePage = () => {
 
   return (
     <>
-      <MovieHeroComp />
-
-      <div className="my-12 px-4 lg-ml-20 lg:w-2/1">
-        <div className="flex flex-col items-start gap-3">
-          <h1 className="text-gray-800 font-bold gap-3 text-2xl">
-            About the movie
-          </h1>
-          <p>{movie.overview}</p>
+      {loading ? (
+        <div
+          className="flex items-center w-full justify-center"
+          style={{ height: "85vh" }}
+        >
+          <HashLoader
+            className="mb-28 md:mb-32"
+            color="#e33030"
+            speedMultiplier={2}
+          />
         </div>
+      ) : (
+        <>
+          <MovieHeroComp />
 
-        <div className="my-8">
-          <hr />
-        </div>
+          <div className="my-6 md:my-12 px-4 lg:ml-20 lg:w-2/1">
+            <div className="flex flex-col items-start gap-1 md:gap-3">
+              <h1 className="text-gray-800 font-bold gap-3 text-xl md:text-2xl">
+                About the movie
+              </h1>
+              <px className="text-xs md:text-base">{movie.overview}</px>
+            </div>
 
-        <div className="my-8">
-          <h2 className="text-gray-800 font-bold text-2xl mb-3">
-            Applicable Offers
-          </h2>
-          <div className="flex flex-col gap-3 lg:flex-row">
-            <div className="flex items-start gap-2 bg-yellow-100 p-3 border-yellow-400 border-dashed border-2 rounded-md">
-              <div className="w-8 h-8">
-                <FaCcVisa className="w-full h-full" />
-              </div>
-              <div>
-                <h3 className="text-gray-700 text-xl font-bold">
-                  Visa Stream Offer
-                </h3>
-                <p className="text-gray-600">
-                  Get 75% off up to INR 200 on all RuPay Card* on BookMyShow
-                  Stream
-                </p>
+            <div className="my-3 md:my-8">
+              <hr />
+            </div>
+
+            <div className="my-3 md:my-8">
+              <h2 className="text-gray-800 font-bold text-xl md:text-2xl mb-3">
+                Applicable Offers
+              </h2>
+              <div className="flex flex-col gap-3 lg:flex-row">
+                <div className="flex items-start gap-2 bg-yellow-100 p-3 border-yellow-400 border-dashed border-2 rounded-md">
+                  <div className="w-8 h-8">
+                    <FaCcVisa className="w-full h-full" />
+                  </div>
+                  <div>
+                    <h3 className="text-gray-700 text-base md:text-xl font-bold">
+                      Visa Stream Offer
+                    </h3>
+                    <p className="text-gray-600 text-xs md:text-base">
+                      Get 75% off up to INR 200 on all RuPay Card* on BookMyShow
+                      Stream
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-2 p-3 border-2 border-dashed border-yellow-400 rounded-md bg-yellow-100">
+                  <div className="w-8 h-8">
+                    <FaCcApplePay className="w-full h-full" />
+                  </div>
+                  <div className="flex flex-col items-start">
+                    <h3 className="text-gray-700 text-base md:text-xl font-bold">
+                      Film Pass
+                    </h3>
+                    <p className="text-gray-600 text-xs md:text-base">
+                      Get 75% off up to INR 200 on all RuPay Card* on BookMyShow
+                      Stream
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex items-start gap-2 p-3 border-2 border-dashed border-yellow-400 rounded-md bg-yellow-100">
-              <div className="w-8 h-8">
-                <FaCcApplePay className="w-full h-full" />
-              </div>
-              <div className="flex flex-col items-start">
-                <h3 className="text-gray-700 text-xl font-bold">Film Pass</h3>
-                <p className="text-gray-600">
-                  Get 75% off up to INR 200 on all RuPay Card* on BookMyShow
-                  Stream
-                </p>
-              </div>
+
+            <div className="my-3 md:my-8">
+              <hr />
+            </div>
+
+            {/* Cast Sliders  */}
+            <div className="my-3 md:my-8 overflow-hidden">
+              <h2 className="text-gray-800 font-bold text-lg md:text-2xl mb-2 md:mb-4">
+                Cast and Crew
+              </h2>
+              <Slider {...settingCast}>
+                {cast.map((castData) => {
+                  return (
+                    <Cast
+                      image={castData.profile_path}
+                      castName={castData.original_name}
+                      role={castData.character}
+                    />
+                  );
+                })}
+              </Slider>
+            </div>
+
+            <div className="my-3 md:my-8">
+              <hr />
+            </div>
+
+            {/* Recommended Sliders  */}
+            <div className="my-3 md:my-8 overflow-hidden">
+              <PosterSlider
+                config={settings}
+                title="Recommended Movies"
+                posters={recommdenedMovies}
+                isDark={false}
+              />
+            </div>
+
+            <div className="my-3 md:my-8">
+              <hr />
+            </div>
+
+            <div className="overflow-hidden mb-16">
+              <PosterSlider
+                config={settings}
+                title="BMS XCLUSIVE Movies"
+                posters={similarMovies}
+                isDark={false}
+              />
             </div>
           </div>
-        </div>
-
-        <div className="my-8">
-          <hr />
-        </div>
-
-        {/* Cast Sliders  */}
-        <div className="my-8 overflow-hidden">
-          <h2 className="text-gray-800 font-bold text-2xl mb-4">
-            Cast and Crew
-          </h2>
-          <Slider {...settingCast}>
-            {cast.map((castData) => {
-              return (
-                <Cast
-                  image={castData.profile_path}
-                  castName={castData.original_name}
-                  role={castData.character}
-                />
-              );
-            })}
-          </Slider>
-        </div>
-
-        <div className="my-8">
-          <hr />
-        </div>
-
-        {/* Recommended Sliders  */}
-        <div className="my-8 overflow-hidden">
-          <PosterSlider
-            config={settings}
-            title="Recommended Movies"
-            posters={recommdenedMovies}
-            isDark={false}
-          />
-        </div>
-
-        <div className="my-8">
-          <hr />
-        </div>
-
-        <div className="overflow-hidden mb-16">
-          <PosterSlider
-            config={settings}
-            title="BMS XCLUSIVE Movies"
-            posters={similarMovies}
-            isDark={false}
-          />
-        </div>
-      </div>
+        </>
+      )}
     </>
   );
 };
